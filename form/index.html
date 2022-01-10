@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Zoo Keeper Application Form</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+	<div class="appli-form">
+		<div class="header">
+			<h1 class="header__heading">Zoo Keeper Application Form</h1>
+			<span class="header__subtitle">Please complete the form. Mandatory fields are marked with a</span>
+		</div>
+		<form>
+			<div class="container">
+				<h3 class="title">Contact details</h3>
+				<div class="item">
+					<label class="required" for="name">Name</label>
+					<input type="text" id="name" name="name" value="">
+					<span class="error" id="name_error"></span>
+				</div>
+				<div class="item">
+					<label for="phone">Telephone</label>
+					<input type="text" id="phone" name="phone">
+					<span class="error" id="phone_error"></span>
+				</div>
+				<div class="item">
+					<label class="required" for="email">Email</label>
+					<input type="text" id="email" name="email" value="">
+					<span class="error" id="email_error"></span>
+				</div>
+			</div>
+			<div class="container">
+				<h3 class="title">Personal information</h3>
+				<div class="item">
+					<label class="required" for="age">Age</label>
+					<input type="number" id="age" name="age">
+					<span class="error" id="age_error"></span>
+				</div>
+				<div class="item">
+					<label for="gender">Gender</label>
+					<div class="radio-gender__item">
+						<input type="radio" id="female" name="gender">
+						<label for="female">Female</label>
+					</div>
+					<div class="radio-gender__item">
+						<input type="radio" id="male" name="gender">
+						<label for="male">Male</label>
+					</div>
+				</div>
+				<div class="item">
+					<label for="question">When did you first know you wanted to be a zoo-keeper?</label>
+					<textarea name="question" id="question"></textarea>
+				</div>
+			</div>
+			<div class="container">
+				<h3 class="title">Pick your favorite animals</h3>
+				<div class="item item__checkbox">
+					<div class="item__checkbox">
+						<input id="zebra" name="zebra" type="checkbox">
+						<label for="zebra">Zebra</label>
+					</div>
+					<div class="item__checkbox">
+						<input id="cat" name="cat" type="checkbox">
+						<label for="cat">Cat</label>
+					</div>
+					<div class="item__checkbox">
+						<input id="Anaconda" name="Anaconda" type="checkbox">
+						<label for="Anaconda">Anaconda</label>
+					</div>
+					<div class="item__checkbox">
+						<input id="Human" name="Human" type="checkbox">
+						<label for="Human">Human</label>
+					</div>
+					<div class="item__checkbox">
+						<input id="Elephant" name="Elephant" type="checkbox">
+						<label for="Elephant">Elephant</label>
+					</div>
+					<div class="item__checkbox">
+						<input id="Wildebeest" name="Wildebeest" type="checkbox">
+						<label for="Wildebeest">Wildebeest</label>
+					</div>
+					<div class="item__checkbox">
+						<input id="Pigeon" name="Pigeon" type="checkbox">
+						<label for="Pigeon">Pigeon</label>
+					</div>
+					<div class="item__checkbox">
+						<input id="Crab" name="Crab" type="checkbox">
+						<label for="Crab">Crab</label>
+					</div>
+				</div>
+			</div>
+			<div class="item__btn">
+				<div class="item__btn-bgc"></div>
+				<button onclick="return validate();" class="btn">Submit Application</button>
+			</div>
+		</form>
+	</div>
+
+	<!-- Validate-->
+	<script>
+
+		// Lấy giá trị của một input
+		function getValue(id){
+			return document.getElementById(id).value.trim();
+		}
+
+		// Hiển thị ra lỗi
+		function showError(key, mess){
+			document.getElementById(key + '_error').innerHTML = mess;
+		}
+
+		function validate(){
+			var flag = true;
+
+			// Name không được trống, tối thiểu 2 ký tự, ko chứa ký tự đặc biệt, được dùng khoảng trống
+			var name = getValue('name');
+			if (name == '' || name.length < 2 || !/^[a-zA-Z\s-, ]+$/.test(name)){
+				flag = false;
+				showError('name', 'Please enter a valid Name');
+			}
+
+			// Phone được để trống, cố định 10 số, không chứa khoảng trống
+			var phone = getValue('phone');
+			if (phone !== '' && !/^\d{10}$/.test(phone)){
+				flag = false;
+				showError('phone', 'Please enter a valid Telephone');
+			}
+
+			// Email không được bỏ trống và tuân theo định dạng abc@xyz
+			var email = getValue('email');
+			var emailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+			if (!emailformat.test(email)){
+				flag = false;
+
+				showError('email', 'Please enter a valid Email');
+			}
+
+			// Age không được trống, số từ 1-100
+			var age = getValue('age');
+			if (age == '' || !/^[1-9]?[0-9]{1}$|^100$/.test(age)){
+				flag = false;
+				showError('age', 'Please enter a valid Age');
+			}
+
+			return flag;
+		}
+	</script>
+</body>
+</html>
