@@ -11,14 +11,16 @@ html{
 body{
     display: flex;
     width: 100vw;
-    min-height: 100vh;
+    height: 100vh;
+    width: 100vw;
     background: linear-gradient(to top right, #fa9e1b, #8d4fff);
 }
 .appli-form{
     margin: auto;
     background-color: #fff;
     border-radius: 6px;
-    padding: 10px 30px;
+    padding: 14px 30px;
+    width: 680px;
 }
 
 /* ======= Dấu * để hiển thị required ======= */
@@ -47,24 +49,20 @@ label.required::after{
 }
 .header__subtitle{
     font-style: italic;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 400;
     position: relative;
 }
-.header__subtitle::after{
-    content: "*";
-    display: block;
+
+.text--red{
     color: red;
-    position: absolute;
-    top: 0;
-    right: -10px;
 }
 
 /* ========= Form ======== */
 .container{
     border: 2px solid #ccc;
     border-radius: 2px;
-    margin-bottom: 26px;
+    margin-bottom: 32px;
     padding: 10px 0;
     position: relative;
 }
@@ -122,7 +120,89 @@ textarea{
 .radio-gender__item{
     display: flex;
     align-items: center;
-    width: 90px;
+    margin: 6px 0;
+}
+
+.error{
+    color:red;
+    /* display: block; */
+    padding: 5px 0px;
+    flex: 0.5;
+    font-size: 1.3rem;
+}
+
+/* ====== Custom radio ========= */
+
+input[type="radio"] {
+    display: none;
+}
+.radio__label{
+    padding-left: 28px;
+    position: relative;
+    margin: 0;
+    line-height: 1.4rem;
+}
+.radio__label:before {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    content: "";
+    background: #fff;
+    border: 1px solid #ccc;
+}
+input[type="radio"]:checked ~ .radio__label:after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 3px;
+    background: #ac62dd;
+}
+input[type="radio"]:checked ~ .radio__label::before{
+    border-width: 1px;
+    border-color: #8d44be;
+}
+
+/* ========= Custom Checkbox ========== */
+input[type="checkbox"] {
+    display: none;
+}
+.checkbox__label{
+    padding-left: 28px;
+    position: relative;
+    margin: 0;
+    line-height: 1.4rem;
+}
+.checkbox__label:before {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    content: "";
+    background: #fff;
+    border: 1px solid #ccc;
+}
+input[type="checkbox"]:checked ~ .checkbox__label:after {
+    content: "";
+    width: 4px;
+    height: 12px;
+    border: solid #662d8c;
+    border-width: 0 2px 2px 0;
+    position: absolute;
+    top: 25%;
+    transform:translate(-50%,-50%) rotate(40deg);
+    -webkit-transform: translate(-50%,-50%) rotate(40deg);
+    left: 8px;
 }
 
 /* ====== Button submit form ======= */
@@ -144,6 +224,7 @@ textarea{
     height: 100%;
     background: linear-gradient(to right, #fa9e1b, #8d4fff, #fa9e1b);
     transition: all 400ms ease;
+    -webkit-transition: all 400ms ease;
     cursor: pointer;
 }
 
@@ -165,10 +246,37 @@ textarea{
     cursor: pointer;
 }
 
-.error{
-    color:red;
-    display: block;
-    padding: 5px 0px;
-    flex: 0.5;
-    font-size: 1.3rem;
+/* ====== responsive ===== */
+/* Mobile */
+@media only screen and (max-width: 46.1875em){
+    .appli-form{
+        width: 100%;
+    }
+    .item__checkbox{
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: space-evenly;
+    }
+    .item{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    input[type=text],
+    input[type=number],
+    textarea{
+        padding: 6px 8px;
+        width: 100%;
+        margin-top: 6px;
+    }
+
+    label[for="question"]{
+        width: 100%;
+    }
+}
+/* Tablet */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em){
+    .item__checkbox{
+        display: grid;
+        grid-template-columns: auto auto auto;
+    }
 }

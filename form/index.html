@@ -14,7 +14,7 @@
 	<div class="appli-form">
 		<div class="header">
 			<h1 class="header__heading">Zoo Keeper Application Form</h1>
-			<span class="header__subtitle">Please complete the form. Mandatory fields are marked with a</span>
+			<span class="header__subtitle">Please complete the form. Mandatory fields are marked with a <span class="text--red">*</span></span>
 		</div>
 		<form>
 			<div class="container">
@@ -46,11 +46,11 @@
 					<label for="gender">Gender</label>
 					<div class="radio-gender__item">
 						<input type="radio" id="female" name="gender">
-						<label for="female">Female</label>
+						<label class="radio__label" for="female">Female</label>
 					</div>
 					<div class="radio-gender__item">
 						<input type="radio" id="male" name="gender">
-						<label for="male">Male</label>
+						<label class="radio__label" for="male">Male</label>
 					</div>
 				</div>
 				<div class="item">
@@ -63,35 +63,35 @@
 				<div class="item item__checkbox">
 					<div class="item__checkbox">
 						<input id="zebra" name="zebra" type="checkbox">
-						<label for="zebra">Zebra</label>
+						<label class="checkbox__label" for="zebra">Zebra</label>
 					</div>
 					<div class="item__checkbox">
 						<input id="cat" name="cat" type="checkbox">
-						<label for="cat">Cat</label>
+						<label class="checkbox__label" for="cat">Cat</label>
 					</div>
 					<div class="item__checkbox">
 						<input id="Anaconda" name="Anaconda" type="checkbox">
-						<label for="Anaconda">Anaconda</label>
+						<label class="checkbox__label" for="Anaconda">Anaconda</label>
 					</div>
 					<div class="item__checkbox">
 						<input id="Human" name="Human" type="checkbox">
-						<label for="Human">Human</label>
+						<label class="checkbox__label" for="Human">Human</label>
 					</div>
 					<div class="item__checkbox">
 						<input id="Elephant" name="Elephant" type="checkbox">
-						<label for="Elephant">Elephant</label>
+						<label class="checkbox__label" for="Elephant">Elephant</label>
 					</div>
 					<div class="item__checkbox">
 						<input id="Wildebeest" name="Wildebeest" type="checkbox">
-						<label for="Wildebeest">Wildebeest</label>
+						<label class="checkbox__label" for="Wildebeest">Wildebeest</label>
 					</div>
 					<div class="item__checkbox">
 						<input id="Pigeon" name="Pigeon" type="checkbox">
-						<label for="Pigeon">Pigeon</label>
+						<label class="checkbox__label" for="Pigeon">Pigeon</label>
 					</div>
 					<div class="item__checkbox">
 						<input id="Crab" name="Crab" type="checkbox">
-						<label for="Crab">Crab</label>
+						<label class="checkbox__label" for="Crab">Crab</label>
 					</div>
 				</div>
 			</div>
@@ -122,14 +122,14 @@
 			var name = getValue('name');
 			if (name == '' || name.length < 2 || !/^[a-zA-Z\s-, ]+$/.test(name)){
 				flag = false;
-				showError('name', 'Please enter a valid Name');
+				showError('name', 'Please enter a valid name');
 			}
 
 			// Phone được để trống, cố định 10 số, không chứa khoảng trống
 			var phone = getValue('phone');
 			if (phone !== '' && !/^\d{10}$/.test(phone)){
 				flag = false;
-				showError('phone', 'Please enter a valid Telephone');
+				showError('phone', 'Please enter a valid telephone');
 			}
 
 			// Email không được bỏ trống và tuân theo định dạng abc@xyz
@@ -138,14 +138,14 @@
 			if (!emailformat.test(email)){
 				flag = false;
 
-				showError('email', 'Please enter a valid Email');
+				showError('email', 'Please enter a valid email');
 			}
 
 			// Age không được trống, số từ 1-100
 			var age = getValue('age');
 			if (age == '' || !/^[1-9]?[0-9]{1}$|^100$/.test(age)){
 				flag = false;
-				showError('age', 'Please enter a valid Age');
+				showError('age', 'Please enter a valid age');
 			}
 
 			return flag;
